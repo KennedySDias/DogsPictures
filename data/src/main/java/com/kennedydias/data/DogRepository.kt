@@ -6,6 +6,8 @@ interface DogRepository {
 
     suspend fun getBreeds(forceUpdate: Boolean): List<BreedModel>
 
+    suspend fun getImagesByBreed(breed: String): List<String>
+
 }
 
 class DogRepositoryImpl(
@@ -27,6 +29,10 @@ class DogRepositoryImpl(
                     }
                 }
         }
+    }
+
+    override suspend fun getImagesByBreed(breed: String): List<String> {
+        return breedsRemoteDataSource.fetchImagesByBreed(breed)
     }
 
     private suspend fun getBreedsFromRemote(forceUpdate: Boolean): List<BreedModel> {

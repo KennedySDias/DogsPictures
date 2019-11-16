@@ -9,6 +9,8 @@ interface BreedsRemoteDataSource {
 
     suspend fun getBreeds(): List<BreedModel>
 
+    suspend fun fetchImagesByBreed(breed: String): List<String>
+
 }
 
 class BreedsRemoteDataSourceImpl(
@@ -23,6 +25,13 @@ class BreedsRemoteDataSourceImpl(
                 .fetchBreeds()
                 .message
         )
+    }
+
+    override suspend fun fetchImagesByBreed(breed: String): List<String> {
+        return retrofitBuilder
+            .build(DogApi::class.java)
+            .fetchImagesByBreed(breed)
+            .message ?: emptyList()
     }
 
 }

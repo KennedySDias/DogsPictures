@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -26,11 +27,28 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':data')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    def mainApplicationDependencies = rootProject.ext.mainApplicationDependencies
+    def unitTestDependencies = rootProject.ext.unitTestDependencies
+    def uiTestDependencies = rootProject.ext.uiTestDependencies
+
+    // Main dependencies
+    implementation mainApplicationDependencies.kotlin
+    implementation mainApplicationDependencies.coreKtx
+    implementation mainApplicationDependencies.retrofit
+    implementation mainApplicationDependencies.koinCore
+    implementation mainApplicationDependencies.koinScope
+    implementation mainApplicationDependencies.kotlinCoroutinesCore
+    implementation mainApplicationDependencies.kotlinCoroutinesAndroid
+
+    // Unit tests dependencies
+    testImplementation unitTestDependencies.junit
+    testImplementation unitTestDependencies.koinTest
+
+    // UI tests dependencies
+    androidTestImplementation uiTestDependencies.junit
+    androidTestImplementation uiTestDependencies.espressoCore
 }

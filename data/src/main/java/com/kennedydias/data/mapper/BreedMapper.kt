@@ -1,5 +1,7 @@
 package com.kennedydias.data.mapper
 
+import com.google.gson.Gson
+import com.google.gson.JsonParser
 import com.kennedydias.data.local.entity.BreedCache
 import com.kennedydias.data.model.BreedModel
 import com.kennedydias.data.remote.payload.BreedsPayload
@@ -25,15 +27,20 @@ class BreedMapper {
 
     private fun map(payload: BreedsPayload?): List<BreedModel> {
         return if (payload != null) {
-            val fields = payload.javaClass.kotlin.members
+            // Transform all attributes from an object to a list of objects
+            val parser = JsonParser()
+            val element = parser.parse(Gson().toJson(payload))
+            val obj = element.asJsonObject
+
+            val entries = obj.entrySet()
 
             val newList = mutableListOf<BreedModel>()
-            fields.forEach {
-                if (it != null) {
+            for ((key) in entries) {
+                if (key != null) {
                     newList.add(
                         BreedModel(
-                            name = it.name.toUpperCase(),
-                            key = it.name
+                            name = key.capitalize(),
+                            key = key
                         )
                     )
                 }

@@ -19,7 +19,7 @@ class GalleryActivity : BaseActivity() {
     private fun openFragment() {
         val fragment =
             GalleryFragment.newInstance(
-                intent.getStringExtra(GalleryFragment.PARAMETER_BREED) ?: ""
+                intent.getParcelableExtra(GalleryFragment.PARAMETER_BREED)
             )
         supportFragmentManager.addFragment(containerId, fragment)
     }

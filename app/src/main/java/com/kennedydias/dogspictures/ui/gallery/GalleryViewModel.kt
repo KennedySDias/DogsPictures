@@ -11,6 +11,7 @@ import com.kennedydias.dogspictures.ui.gallery.paging.PictureSourceFactory
 import com.kennedydias.dogspictures.utils.ResourcesUtils
 import com.kennedydias.domain.exception.NotConnectedException
 import com.kennedydias.domain.exception.UnauthorizedException
+import com.kennedydias.domain.model.BreedData
 import com.kennedydias.domain.usecase.GetAllImagesByBreedUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -33,11 +34,11 @@ class GalleryViewModel(
     val gettingDataOb = SingleLiveEvent<Boolean>()
 
     fun init(arguments: Bundle?) {
-        val breed = arguments?.getString(GalleryFragment.PARAMETER_BREED)
+        val breed = arguments?.getParcelable<BreedData>(GalleryFragment.PARAMETER_BREED)
 
         // Get a deferred function to fetch list
         val deferred: Deferred<List<String>?>? =
-            if (breed?.isNotEmpty() == true) getPictures(breed)
+            if (breed?.key?.isNotEmpty() == true) getPictures(breed.key)
             else {
                 fatalErrorOb.value = resourcesUtils.getString(R.string.something_is_wrong)
                 null

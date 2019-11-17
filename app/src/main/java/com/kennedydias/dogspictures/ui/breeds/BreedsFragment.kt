@@ -102,7 +102,7 @@ class BreedsFragment : BaseFragment() {
         binding.swipeRefreshLayout.isRefreshing = loading
     }
 
-    private fun handleSeeMore(breed: String) {
+    private fun handleSeeMore(breed: BreedData) {
         val currentActivity = activity
         if (currentActivity != null && currentActivity is SeeMoreInterface) {
             currentActivity.seeMore(breed)

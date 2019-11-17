@@ -9,6 +9,7 @@ import com.kennedydias.dogspictures.ui.base.BaseActivity
 import com.kennedydias.dogspictures.ui.breeds.BreedsFragment
 import com.kennedydias.dogspictures.ui.gallery.GalleryActivity
 import com.kennedydias.dogspictures.ui.gallery.GalleryFragment
+import com.kennedydias.domain.model.BreedData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), SeeMoreInterface {
@@ -20,7 +21,7 @@ class MainActivity : BaseActivity(), SeeMoreInterface {
         configureFragment()
     }
 
-    override fun seeMore(breed: String) {
+    override fun seeMore(breed: BreedData) {
         if (frameLayoutPictures != null) {
             val galleryFragment = GalleryFragment.newInstance(breed)
             supportFragmentManager.addFragment(R.id.frameLayoutPictures, galleryFragment)

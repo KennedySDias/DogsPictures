@@ -4,10 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colorScreenBackground">#FFFFFF</color>
-    <color name="colorShapeBackground">#FFFFFF</color>
+    <color name="colorScreenBackground">#121212</color>
+    <color name="colorShapeBackground">#1E1E1E</color>
 
-    <color name="colorIcon">#C2C2C2</color>
+    <color name="colorIcon">#797979</color>
 
     <color name="colorDividerLine">#ACACAC</color>
 </resources>

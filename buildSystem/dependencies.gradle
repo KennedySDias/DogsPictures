@@ -4,6 +4,7 @@ ext {
     appCompat_version = '1.1.0'
     constraintLayout_version = '1.1.3'
     material_version = '1.0.0'
+    paging_version = '2.1.0'
 
     //Third party libraries
     coreKtx_version = '1.1.0'
@@ -11,6 +12,7 @@ ext {
     retrofit_version = '2.6.1'
     koin_version = '2.0.1'
     kotlinCoroutinesCore_version = '1.3.2'
+    glide_version = '4.10.0'
 
     //Unit Testing
     junit_version = '4.12'
@@ -34,6 +36,9 @@ ext {
             appCompat              : "androidx.appcompat:appcompat:$appCompat_version",
             constraintLayout       : "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
             material               : "com.google.android.material:material:$material_version",
+            pagingRuntime          : "androidx.paging:paging-runtime:$paging_version",
+            glide                  : "com.github.bumptech.glide:glide:$glide_version",
+            glideCmpiler           : "com.github.bumptech.glide:compiler:$glide_version",
     ]
 
     unitTestDependencies = [

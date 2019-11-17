@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -48,6 +49,10 @@ dependencies {
     implementation mainApplicationDependencies.constraintLayout
     implementation mainApplicationDependencies.appCompat
     implementation mainApplicationDependencies.material
+    implementation mainApplicationDependencies.pagingRuntime
+    implementation mainApplicationDependencies.glide
+
+    kapt mainApplicationDependencies.glide
 
     // Unit tests dependencies
     testImplementation unitTestDependencies.junit

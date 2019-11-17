@@ -5,6 +5,7 @@ import com.kennedydias.data.di.cacheDataSourceModule
 import com.kennedydias.data.di.mapperDataModule
 import com.kennedydias.data.di.remoteDataSourceModule
 import com.kennedydias.data.di.repositoryModule
+import com.kennedydias.dogspictures.di.utilsModules
 import com.kennedydias.dogspictures.di.viewModelModules
 import com.kennedydias.domain.di.mapperDomainModule
 import com.kennedydias.domain.di.useCasesModule
@@ -31,7 +32,8 @@ class DogsApplication : Application() {
             useCasesModule,
 
             // Presentation
-            viewModelModules
+            viewModelModules,
+            utilsModules
         )
 
         startKoin {

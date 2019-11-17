@@ -9,7 +9,9 @@ import com.kennedydias.dogspictures.R
 import com.kennedydias.dogspictures.databinding.ListItemBreedBinding
 import com.kennedydias.domain.model.BreedData
 
-class BreedsAdapter : RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
+class BreedsAdapter(
+    private val viewModel: BreedsViewModel
+) : RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
 
     private val list = mutableListOf<BreedData>()
 
@@ -28,6 +30,7 @@ class BreedsAdapter : RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         binding?.item = list[position]
+        binding?.viewModel = viewModel
         binding?.executePendingBindings()
     }
 
@@ -39,7 +42,6 @@ class BreedsAdapter : RecyclerView.Adapter<BreedsAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding: ListItemBreedBinding? = DataBindingUtil.bind(itemView)
-
     }
 
 }

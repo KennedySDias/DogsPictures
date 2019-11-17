@@ -2,4 +2,6 @@
     <string name="app_name">DogsPictures</string>
     <string name="no_connection">No Connection</string>
     <string name="there_is_no_internet_connection_check_it_and_try_again">There is no internet connection.\nCheck it and try again.</string>
+    <string name="no_results">No Results</string>
+    <string name="breeds">Breeds</string>
 </resources>

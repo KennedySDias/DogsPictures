@@ -9,11 +9,17 @@
             name="item"
             type="com.kennedydias.domain.model.BreedData" />
 
+        <variable
+            name="viewModel"
+            type="com.kennedydias.dogspictures.ui.breeds.BreedsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() -> viewModel.seeMore(item.key)}"
         android:padding="16dp">
 
         <ImageView

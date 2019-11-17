@@ -1,5 +1,6 @@
 package com.kennedydias.dogspictures.ui.breeds
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kennedydias.dogspictures.R
+import com.kennedydias.dogspictures.custom.SeeMoreInterface
 import com.kennedydias.dogspictures.databinding.FragmentBreedsBinding
 import com.kennedydias.dogspictures.extensions.observe
 import com.kennedydias.dogspictures.ui.base.BaseFragment
+import com.kennedydias.dogspictures.ui.gallery.GalleryActivity
+import com.kennedydias.dogspictures.ui.gallery.GalleryFragment
 import com.kennedydias.domain.model.BreedData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +38,7 @@ class BreedsFragment : BaseFragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_breeds, container, false)
         binding.lifecycleOwner = this
 
-        breedsAdapter = BreedsAdapter()
+        breedsAdapter = BreedsAdapter(viewModel)
 
         configureComponents()
         configureObservables()
@@ -70,6 +74,7 @@ class BreedsFragment : BaseFragment() {
         observe(viewModel.notConnectedOb, ::handleNotConnected)
         observe(viewModel.gettingDataOb, ::handleGettingData)
         observe(viewModel.fatalErrorOb, ::handleFatalError)
+        observe(viewModel.seeMoreOb, ::handleSeeMore)
         observe(viewModel.breedsOb, ::handleBreeds)
         observe(viewModel.errorOb, ::handleError)
     }
@@ -95,6 +100,17 @@ class BreedsFragment : BaseFragment() {
 
     private fun handleGettingData(loading: Boolean) {
         binding.swipeRefreshLayout.isRefreshing = loading
+    }
+
+    private fun handleSeeMore(breed: String) {
+        val currentActivity = activity
+        if (currentActivity != null && currentActivity is SeeMoreInterface) {
+            currentActivity.seeMore(breed)
+        } else {
+            val newIntent = Intent(context, GalleryActivity::class.java)
+            newIntent.putExtra(GalleryFragment.PARAMETER_BREED, breed)
+            startActivity(newIntent)
+        }
     }
 
     private fun handleBreeds(list: List<BreedData>) {

@@ -18,6 +18,7 @@ class BreedsViewModel(
     val fatalErrorOb = SingleLiveEvent<String>()
     val notConnectedOb = SingleLiveEvent<Boolean>()
     val gettingDataOb = SingleLiveEvent<Boolean>()
+    val seeMoreOb = SingleLiveEvent<String>()
 
     fun init() {
         getBreeds(false)
@@ -58,6 +59,10 @@ class BreedsViewModel(
             }
 
         }
+    }
+
+    fun seeMore(breed: String) {
+        seeMoreOb.value = breed
     }
 
 }

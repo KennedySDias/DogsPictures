@@ -10,4 +10,6 @@
     <color name="colorIcon">#797979</color>
 
     <color name="colorDividerLine">#ACACAC</color>
+
+    <color name="colorPlaceholder">#1E1E1E</color>
 </resources>

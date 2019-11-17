@@ -10,4 +10,6 @@
     <color name="colorIcon">#C2C2C2</color>
 
     <color name="colorDividerLine">#ACACAC</color>
+
+    <color name="colorPlaceholder">#DBDBDB</color>
 </resources>

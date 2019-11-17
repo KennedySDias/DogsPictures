@@ -15,6 +15,7 @@ import com.kennedydias.dogspictures.extensions.hideWithAlphaAnimation
 import com.kennedydias.dogspictures.extensions.observe
 import com.kennedydias.dogspictures.extensions.showWithAlphaAnimation
 import com.kennedydias.dogspictures.ui.base.BaseFragment
+import com.kennedydias.domain.model.BreedData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GalleryFragment : BaseFragment() {
@@ -53,6 +54,7 @@ class GalleryFragment : BaseFragment() {
     }
 
     private fun configureComponents() {
+        configureToolbar()
         configureRecyclerView()
     }
 
@@ -99,6 +101,13 @@ class GalleryFragment : BaseFragment() {
         showSnackbar(message)
     }
 
+    private fun configureToolbar() {
+        binding.toolbar.title =
+            arguments?.getParcelable<BreedData>(PARAMETER_BREED)?.name ?: getString(
+                R.string.gallery
+            )
+    }
+
     private fun configureRecyclerView() {
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
@@ -109,9 +118,9 @@ class GalleryFragment : BaseFragment() {
     companion object {
         const val PARAMETER_BREED = "PARAMETER_BREED"
 
-        fun newInstance(breed: String): GalleryFragment {
+        fun newInstance(breed: BreedData?): GalleryFragment {
             val args = Bundle()
-            args.putString(PARAMETER_BREED, breed)
+            args.putParcelable(PARAMETER_BREED, breed)
 
             val fragment = GalleryFragment()
             fragment.arguments = args

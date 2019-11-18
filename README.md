@@ -32,8 +32,8 @@ O aplicativo foi desenvolvido utilizando a linguagem Kotlin e toda as comuniçõ
 - Execute o comando `./gradlew connectedAndroidTest` para executar os Testes de Integração/UI
 
 ## Imagens
-<img src="images/01.png" width="250"> <img src="images/02.png" width="250">
+<img src="images/01.png" width="250"> <img src="images/02.png" width="250"><img src="images/03.png" width="250">
 <br>
-<img src="images/03.png" width="250"> <img src="images/04.png" width="250">
+<img src="images/04.png" width="600">
 <br>
 <img src="images/05.png" width="600">

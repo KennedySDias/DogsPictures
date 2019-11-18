@@ -8,25 +8,19 @@
             name="pictureUrl"
             type="String" />
 
-        <variable
-            name="viewModel"
-            type="com.kennedydias.dogspictures.ui.gallery.GalleryViewModel" />
-
     </data>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:onClick="@{() -> viewModel.seeMore(pictureUrl)}">
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
 
         <ImageView
             android:id="@+id/imageViewPicture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
             android:contentDescription="@null"
-            app:imageUrlCenterCrop="@{pictureUrl}" />
+            app:imageUrlFitCenter="@{pictureUrl}" />
 
     </RelativeLayout>
 

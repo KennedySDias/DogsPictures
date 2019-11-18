@@ -17,8 +17,12 @@ Também utilizando algumas bibliotecas como:
   
 O aplicativo foi desenvolvido utilizando a linguagem Kotlin e toda as comunições entre as camadas são feitas através de Coroutines.
 
-
 ## Como utilizar
+- Visualize e selecione uma raça de cachorro (breed)
+- Será exibido uma lista de imagens de cachorros da raça selecionada.
+- Toque sobre uma imagem para visualizar ela em modo de tela cheia.
+
+## Como Executar
 - Clone ou baixe o repositório em seu computador. 
 - Abra o projeto utilizando o Android Studio.
 - Aguarde o Androd Studio baixar e instalar todas as dependências.

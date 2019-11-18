@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kennedydias.dogspictures.R
 import com.kennedydias.dogspictures.databinding.ListItemPictureBinding
 
-class GalleryAdapter : PagedListAdapter<String, GalleryAdapter.ViewHolder>(DIFF_CALLBACK) {
+class GalleryAdapter(
+    private val viewModel: GalleryViewModel
+) : PagedListAdapter<String, GalleryAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -25,6 +27,7 @@ class GalleryAdapter : PagedListAdapter<String, GalleryAdapter.ViewHolder>(DIFF_
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         binding?.pictureUrl = getItem(position)
+        binding?.viewModel = viewModel
         binding?.executePendingBindings()
     }
 

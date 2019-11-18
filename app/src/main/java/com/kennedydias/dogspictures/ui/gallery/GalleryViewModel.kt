@@ -32,6 +32,7 @@ class GalleryViewModel(
     val fatalErrorOb = SingleLiveEvent<String>()
     val notConnectedOb = SingleLiveEvent<Boolean>()
     val gettingDataOb = SingleLiveEvent<Boolean>()
+    val seeMoreOb = SingleLiveEvent<String>()
 
     fun init(arguments: Bundle?) {
         val breed = arguments?.getParcelable<BreedData>(GalleryFragment.PARAMETER_BREED)
@@ -99,6 +100,10 @@ class GalleryViewModel(
                 }
             }
         }
+    }
+
+    fun seeMore(urlPicture: String) {
+        seeMoreOb.value = urlPicture
     }
 
 }

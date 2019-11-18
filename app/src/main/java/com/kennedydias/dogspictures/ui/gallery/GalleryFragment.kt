@@ -1,5 +1,6 @@
 package com.kennedydias.dogspictures.ui.gallery
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.kennedydias.dogspictures.extensions.hideWithAlphaAnimation
 import com.kennedydias.dogspictures.extensions.observe
 import com.kennedydias.dogspictures.extensions.showWithAlphaAnimation
 import com.kennedydias.dogspictures.ui.base.BaseFragment
+import com.kennedydias.dogspictures.ui.fullscreen.FullScreenPictureActivity
 import com.kennedydias.domain.model.BreedData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,7 +40,7 @@ class GalleryFragment : BaseFragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_gallery, container, false)
         binding.lifecycleOwner = this
 
-        galleryAdapter = GalleryAdapter()
+        galleryAdapter = GalleryAdapter(viewModel)
 
         val view = binding.root
 
@@ -63,6 +65,7 @@ class GalleryFragment : BaseFragment() {
         observe(viewModel.notConnectedOb, ::handleNotConnected)
         observe(viewModel.gettingDataOb, ::handleGettingData)
         observe(viewModel.fatalErrorOb, ::handleFatalError)
+        observe(viewModel.seeMoreOb, ::handleSeeMore)
         observe(viewModel.errorOb, ::handleError)
     }
 
@@ -95,6 +98,12 @@ class GalleryFragment : BaseFragment() {
     private fun handleFatalError(message: String) {
         showToast(message)
         finish()
+    }
+
+    private fun handleSeeMore(url: String) {
+        val newIntent = Intent(context, FullScreenPictureActivity::class.java)
+        newIntent.putExtra(FullScreenPictureActivity.PARAMETER_URL_IMAGE, url)
+        startActivity(newIntent)
     }
 
     private fun handleError(message: String) {
